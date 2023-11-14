@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/miraplay_test_client/static/js/main.9a71bce6.js",
+    "index.html": "/miraplay_test_client/index.html",
+    "main.9a71bce6.js.map": "/miraplay_test_client/static/js/main.9a71bce6.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.9a71bce6.js"
+  ]
+}
