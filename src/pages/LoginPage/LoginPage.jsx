@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
 import { useState } from "react";
+import AuthorizationTitle from "../../components/title/AuthorizationTitle";
+import style from "./LoginPage.module.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -36,30 +38,34 @@ export default function Login() {
   };
 
   return (
-    <>
-      <h1>Login</h1>
+    <div className={style.page_container}>
+      <AuthorizationTitle />
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
+      <form className={style.form} onSubmit={handleSubmit}>
+        <label className={style.form_label}>
+          Введіть ваш email:
           <input
+            className={style.form_input}
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
           />
         </label>
-        <label>
-          Password
+        <label className={style.form_label}>
+          Введіть ваш пароль:
           <input
+            className={style.form_input}
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className={style.form_button} type="submit">
+          Log In
+        </button>
       </form>
-    </>
+    </div>
   );
 }

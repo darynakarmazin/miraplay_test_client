@@ -7,6 +7,7 @@ body {
   padding: 0;
   font-family: "Neue Machina", sans-serif;
   color: var(--text-color);
+  background-color: var(--bg-color);
 }
 
 h1,
@@ -45,11 +46,10 @@ button {
 }
 
 .container {
-  width: 1440px;
-  padding-left: 34px;
-  padding-right: 34px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 1200px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 45px auto;
 }
 
 :root {

@@ -1,0 +1,13 @@
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.64;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  color: #afafaf;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 2;
+}
