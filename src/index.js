@@ -13,15 +13,15 @@ const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter basename="/miraplay_test_client">
-        <QueryClientProvider client={queryClient}>
-          <App />
-        </QueryClientProvider>
-      </BrowserRouter>
-    </PersistGate>
-  </Provider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter basename="/miraplay_test_client">
+          <QueryClientProvider client={queryClient}>
+            <App />
+          </QueryClientProvider>
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>
 );

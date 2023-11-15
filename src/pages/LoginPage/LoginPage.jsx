@@ -4,7 +4,7 @@ import { useState } from "react";
 import AuthorizationTitle from "../../components/title/AuthorizationTitle";
 import style from "./LoginPage.module.css";
 
-export default function Login() {
+export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
