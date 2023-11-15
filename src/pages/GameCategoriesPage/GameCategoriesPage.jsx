@@ -7,9 +7,10 @@ function CategoriesPage() {
   const [filter, setFilter] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [games, setGames] = useState([]);
+  const [sort, setSort] = useState(true);
 
   const { data, isLoading, isError } = useQuery(
-    ["games", filter, currentPage],
+    ["games", filter, currentPage, sort],
     fetchGames
   );
   console.log(data);
@@ -19,7 +20,7 @@ function CategoriesPage() {
       `https://api.miraplay.cloud/games/by_page`,
       {
         page: currentPage,
-        isFreshGamesFirst: true,
+        isFreshGamesFirst: sort,
         genre: filter,
         gamesToShow: 9,
       }
@@ -29,6 +30,12 @@ function CategoriesPage() {
 
   const handleFilterClick = (selectedFilter) => {
     setFilter(selectedFilter === "ALL" ? false : selectedFilter);
+    setCurrentPage(1);
+    setGames([]);
+  };
+
+  const handleSortClick = (selectedSort) => {
+    setSort(selectedSort);
     setCurrentPage(1);
     setGames([]);
   };
@@ -49,34 +56,51 @@ function CategoriesPage() {
     <div>
       <h1 className={styles.categoriesPage_title}>ВСІ ІГРИ</h1>
 
-      <ul className={styles.categoriesPage_filterList}>
-        {[
-          "ALL",
-          "FREE",
-          "MOBA",
-          "SHOOTERS",
-          "LAUNCHERS",
-          "MMORPG",
-          "STRATEGY",
-          "FIGHTING",
-          "RACING",
-          "SURVIVAL",
-          "ONLINE",
-        ].map((filterItem) => (
+      <div className={styles.categoriesPage_filters}>
+        <ul className={styles.categoriesPage_filterList}>
+          {[
+            "ALL",
+            "FREE",
+            "MOBA",
+            "SHOOTERS",
+            "LAUNCHERS",
+            "MMORPG",
+            "STRATEGY",
+            "FIGHTING",
+            "RACING",
+            "SURVIVAL",
+            "ONLINE",
+          ].map((filterItem) => (
+            <li
+              key={filterItem}
+              onClick={() => handleFilterClick(filterItem)}
+              className={
+                filter === filterItem ||
+                (filterItem === "ALL" && filter === false)
+                  ? `${styles.activeFilter}  ${styles.filter}`
+                  : styles.filter
+              }
+            >
+              {filterItem}
+            </li>
+          ))}
+        </ul>
+
+        <ul className={styles.categoriesPage_sortList}>
           <li
-            key={filterItem}
-            onClick={() => handleFilterClick(filterItem)}
-            className={
-              filter === filterItem ||
-              (filterItem === "ALL" && filter === false)
-                ? `${styles.activeFilter}  ${styles.filter}`
-                : styles.filter
-            }
+            onClick={() => handleSortClick(true)}
+            className={sort === true ? styles.activeSort : styles.sort}
           >
-            {filterItem}
+            Спочатку нові
           </li>
-        ))}
-      </ul>
+          <li
+            onClick={() => handleSortClick(false)}
+            className={sort === false ? styles.activeSort : styles.sort}
+          >
+            Спочатку старі
+          </li>
+        </ul>
+      </div>
 
       <ul className={styles.categoriesPage_gameList}>
         {updatedGames.map((game) => {
@@ -103,6 +127,11 @@ function CategoriesPage() {
                 {game.gameClass === "STANDART" && (
                   <p className={styles.gameList_free}>БЕЗКОШТОВНО</p>
                 )}
+              </div>
+              <div className={styles.gameList_launchers}>
+                <p className={styles.gameList_launchersP}>
+                  {game.gameLaunchers[0]}
+                </p>
               </div>
             </li>
           );

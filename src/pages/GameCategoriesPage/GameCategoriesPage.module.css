@@ -112,37 +112,91 @@
         padding: 8px 10px;
       }
     }
+
+    .gameList_launchers {
+      display: flex;
+      gap: 3px;
+      left: 10px;
+      position: absolute;
+      top: 285px;
+      align-items: center;
+      background-color: #1c1c1c;
+      border-radius: 50%;
+      display: flex;
+      height: 40px;
+      justify-content: center;
+      width: 40px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      .gameList_launchersP {
+        font-size: 10px;
+      }
+    }
   }
 }
 
-.categoriesPage_filterList {
+.categoriesPage_filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  width: 800px;
-  margin-bottom: 42px;
+  justify-content: space-between;
 
-  .filter {
+  .categoriesPage_filterList {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background: #242424;
-    border: 1px solid #454545;
-    border-radius: 10px;
-    color: var(--text-color);
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 800;
-    height: 46px;
-    line-height: 1.43;
-    padding: 0 25px;
-    text-transform: uppercase;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 800px;
+    margin-bottom: 42px;
+
+    .filter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background: #242424;
+      border: 1px solid #454545;
+      border-radius: 10px;
+      color: var(--text-color);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 800;
+      height: 46px;
+      line-height: 1.43;
+      padding: 0 25px;
+      text-transform: uppercase;
+    }
+
+    .activeFilter {
+      background-color: var(--accent-color);
+    }
   }
 
-  .activeFilter {
-    background-color: var(--accent-color);
+  .categoriesPage_sortList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+
+    gap: 8px;
+    margin-bottom: 42px;
+
+    .sort {
+      background-color: initial;
+      border: 2px solid var(--accent-color);
+      border-radius: 10px 0 0 10px;
+      color: #fff;
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    .activeSort {
+      background-color: var(--accent-color);
+      border: 2px solid var(--accent-color);
+      border-radius: 10px 0 0 10px;
+      color: #fff;
+      padding: 4px;
+      cursor: pointer;
+    }
   }
 }
 
