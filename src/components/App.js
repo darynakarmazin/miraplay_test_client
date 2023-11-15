@@ -27,21 +27,21 @@ function App() {
           index
           element={
             <PrivateRoute
-              redirectTo="/login"
+              redirectTo="login"
               component={<GameCategoriesPage />}
             />
           }
         />
 
         <Route
-          path="/register"
+          path="register"
           element={
             <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
           }
         />
 
         <Route
-          path="/login"
+          path="login"
           element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
         />
       </Route>
