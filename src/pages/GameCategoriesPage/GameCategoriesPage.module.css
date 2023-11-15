@@ -175,7 +175,7 @@
   .categoriesPage_sortList {
     display: flex;
     flex-wrap: wrap;
-    align-items: start;
+    align-items: flex-start;
 
     gap: 8px;
     margin-bottom: 42px;
