@@ -1,0 +1,28 @@
+.menuWrapper {
+  display: flex;
+  gap: 24px;
+
+  .menuGreeting {
+    padding: 20px 10px;
+    background-color: initial;
+    background: #3f9c14;
+    border: 1px solid #454545;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0s linear;
+  }
+
+  .menuLogoutBtn {
+    padding: 20px 10px;
+    backdrop-filter: blur(10px);
+    background: rgba(63, 156, 20, 0.5);
+    border: 1px solid #3f9c14;
+    border-radius: 10px;
+    color: #eaeaea;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: normal;
+    margin-right: 0;
+  }
+}

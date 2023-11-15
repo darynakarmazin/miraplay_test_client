@@ -1,0 +1,18 @@
+.authnav {
+  display: flex;
+  gap: 47px;
+
+  .authnavLink {
+    color: #eaeaea;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.33;
+    text-transform: uppercase;
+    padding: 30px 0;
+  }
+
+  .active {
+    border-bottom: 6px solid #3f9c14;
+  }
+}
