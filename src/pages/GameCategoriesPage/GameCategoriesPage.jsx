@@ -1,32 +1,85 @@
 import axios from "axios";
 import styles from "./GameCategoriesPage.module.css";
 import { useQuery } from "react-query";
-
-async function fetchGames() {
-  const { data } = await axios.post(
-    `https://api.miraplay.cloud/games/by_page`,
-    {
-      page: 1,
-      isFreshGamesFirst: true,
-      genre: false,
-      gamesToShow: 9,
-    }
-  );
-  return data.games;
-}
+import { useState } from "react";
 
 function CategoriesPage() {
-  const { data, isLoading, isError } = useQuery("games", fetchGames);
+  const [filter, setFilter] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [games, setGames] = useState([]);
+
+  const { data, isLoading, isError } = useQuery(
+    ["games", filter, currentPage],
+    fetchGames
+  );
   console.log(data);
+
+  async function fetchGames() {
+    const { data } = await axios.post(
+      `https://api.miraplay.cloud/games/by_page`,
+      {
+        page: currentPage,
+        isFreshGamesFirst: true,
+        genre: filter,
+        gamesToShow: 9,
+      }
+    );
+    return data;
+  }
+
+  const handleFilterClick = (selectedFilter) => {
+    setFilter(selectedFilter === "ALL" ? false : selectedFilter);
+    setCurrentPage(1);
+    setGames([]);
+  };
+
+  const handleShowMoreClick = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const canLoadMore = data && data.gamesListLength >= currentPage * 9;
+
   if (isLoading) return <p>Завантаження...</p>;
   if (isError) return <p>Помилка завантаження даних</p>;
   if (!data) return <p>Дані відсутні</p>;
 
+  const updatedGames = [...games, ...data.games];
+
   return (
     <div>
       <h1 className={styles.categoriesPage_title}>ВСІ ІГРИ</h1>
+
+      <ul className={styles.categoriesPage_filterList}>
+        {[
+          "ALL",
+          "FREE",
+          "MOBA",
+          "SHOOTERS",
+          "LAUNCHERS",
+          "MMORPG",
+          "STRATEGY",
+          "FIGHTING",
+          "RACING",
+          "SURVIVAL",
+          "ONLINE",
+        ].map((filterItem) => (
+          <li
+            key={filterItem}
+            onClick={() => handleFilterClick(filterItem)}
+            className={
+              filter === filterItem ||
+              (filterItem === "ALL" && filter === false)
+                ? `${styles.activeFilter}  ${styles.filter}`
+                : styles.filter
+            }
+          >
+            {filterItem}
+          </li>
+        ))}
+      </ul>
+
       <ul className={styles.categoriesPage_gameList}>
-        {data.map((game) => {
+        {updatedGames.map((game) => {
           return (
             <li key={game._id} className={styles.gameList_item}>
               <img
@@ -48,16 +101,22 @@ function CategoriesPage() {
                   <p className={styles.gameList_genre}>{game.genre}</p>
                 </div>
                 {game.gameClass === "STANDART" && (
-                  <p className={styles.gameList_free}>FREE</p>
+                  <p className={styles.gameList_free}>БЕЗКОШТОВНО</p>
                 )}
               </div>
-              {/* <div>
-                <p>{game.gameLaunchers[0]}</p>
-              </div> */}
             </li>
           );
         })}
       </ul>
+
+      {canLoadMore && (
+        <button
+          className={styles.categoriesPage_btnMore}
+          onClick={handleShowMoreClick}
+        >
+          Показати ще
+        </button>
+      )}
     </div>
   );
 }
