@@ -1,0 +1,113 @@
+.categoriesPage_title {
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 42px;
+  text-transform: uppercase;
+}
+
+.categoriesPage_gameList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+
+  .gameList_item {
+    background: #1c1c1c;
+    border: 1px solid #454545;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 495px;
+    width: 370px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    .gameList_img {
+      border-radius: 20px 20px 0 0;
+      height: 335px;
+      min-height: 335px;
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+    }
+
+    .gameList_trumb {
+      padding: 32px;
+
+      .gameTrumb_title {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1.63;
+        margin-bottom: 6px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        text-transform: uppercase;
+      }
+
+      .gameTrumb_desc {
+        color: #afafaf;
+        font-size: 12px;
+        font-weight: 300;
+        height: 50px;
+        margin-bottom: 30px;
+        line-height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+    .gameList_genres {
+      display: flex;
+      align-items: center;
+      width: calc(100% - 40px);
+      justify-content: space-between;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+
+      .gameList_genresTop {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .gameList_top {
+          display: flex;
+          align-items: center;
+          background: var(--accent-color);
+          backdrop-filter: blur(10px);
+          border-radius: 10px;
+          color: var(--text-color);
+          padding: 10px;
+        }
+
+        .gameList_genre {
+          display: flex;
+          align-items: center;
+          background: rgba(12, 5, 32, 0.25);
+          backdrop-filter: blur(10px);
+          border-radius: 10px;
+          color: var(--text-color);
+          padding: 10px;
+        }
+      }
+
+      .gameList_free {
+        display: flex;
+        align-items: center;
+        background: var(--accent-color);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        color: var(--text-color);
+        padding: 10px;
+      }
+    }
+  }
+}
