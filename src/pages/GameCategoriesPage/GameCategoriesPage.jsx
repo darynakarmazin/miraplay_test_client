@@ -13,7 +13,6 @@ function CategoriesPage() {
     ["games", filter, currentPage, sort],
     fetchGames
   );
-  console.log(data);
 
   async function fetchGames() {
     const { data } = await axios.post(
