@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/miraplay_test_client/static/css/main.b1f835b4.css",
-    "main.js": "/miraplay_test_client/static/js/main.ec1477c6.js",
+    "main.css": "/miraplay_test_client/static/css/main.c8ce4449.css",
+    "main.js": "/miraplay_test_client/static/js/main.47edf28e.js",
     "static/media/NeueMachina-900.ttf": "/miraplay_test_client/static/media/NeueMachina-900.014654455cfb26c46c76.ttf",
     "static/media/NeueMachina-500.ttf": "/miraplay_test_client/static/media/NeueMachina-500.f720034f1ca535bd98d9.ttf",
     "static/media/NeueMachina-400.ttf": "/miraplay_test_client/static/media/NeueMachina-400.4dc4b2a360a973d59975.ttf",
     "static/media/NeueMachina-700.ttf": "/miraplay_test_client/static/media/NeueMachina-700.e3f0d560c71e5363d34c.ttf",
     "index.html": "/miraplay_test_client/index.html",
-    "main.b1f835b4.css.map": "/miraplay_test_client/static/css/main.b1f835b4.css.map",
-    "main.ec1477c6.js.map": "/miraplay_test_client/static/js/main.ec1477c6.js.map"
+    "main.c8ce4449.css.map": "/miraplay_test_client/static/css/main.c8ce4449.css.map",
+    "main.47edf28e.js.map": "/miraplay_test_client/static/js/main.47edf28e.js.map"
   },
   "entrypoints": [
-    "static/css/main.b1f835b4.css",
-    "static/js/main.ec1477c6.js"
+    "static/css/main.c8ce4449.css",
+    "static/js/main.47edf28e.js"
   ]
 }
