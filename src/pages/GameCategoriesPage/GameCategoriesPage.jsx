@@ -8,14 +8,14 @@ function CategoriesPage() {
   const [filter, setFilter] = useState(
     localStorage.getItem("filter") === "false"
       ? false
-      : localStorage.getItem("filter")
+      : localStorage.getItem("filter") || false
   );
   const [currentPage, setCurrentPage] = useState(
     parseInt(localStorage.getItem("currentPage")) || 1
   );
   const [games, setGames] = useState([]);
   const [sort, setSort] = useState(
-    localStorage.getItem("sort") === "false" ? false : true
+    localStorage.getItem("sort") === "false" ? false : true || true
   );
 
   const { data, isLoading, isError } = useQuery(
