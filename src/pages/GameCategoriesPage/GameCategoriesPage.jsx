@@ -2,6 +2,7 @@ import axios from "axios";
 import styles from "./GameCategoriesPage.module.css";
 import { useQuery } from "react-query";
 import { useEffect, useState } from "react";
+import { RotatingLines } from "react-loader-spinner";
 
 function CategoriesPage() {
   const [filter, setFilter] = useState(
@@ -66,7 +67,25 @@ function CategoriesPage() {
 
   const canLoadMore = data && data.gamesListLength >= currentPage * 9;
 
-  if (isLoading) return <p>Завантаження...</p>;
+  if (isLoading)
+    return (
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <RotatingLines
+          strokeColor="grey"
+          strokeWidth="5"
+          animationDuration="0.75"
+          width="96"
+          visible={true}
+        />
+      </div>
+    );
   if (isError) return <p>Помилка завантаження даних</p>;
   if (!data) return <p>Дані відсутні</p>;
 
