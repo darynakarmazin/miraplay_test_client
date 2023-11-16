@@ -15,11 +15,18 @@ const authSlice = createSlice({
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
+    error: null,
   },
   extraReducers: (builder) => {
     builder
       .addCase(register.fulfilled, handleFulfilledPost)
+      .addCase(register.rejected, (state, action) => {
+        state.error = action.payload;
+      })
       .addCase(logIn.fulfilled, handleFulfilledPost)
+      .addCase(logIn.rejected, (state, action) => {
+        state.error = action.payload;
+      })
       .addCase(logOut.fulfilled, handleFulfilledLogOut)
       .addCase(refreshUser.pending, handleRefreshingTrue)
       .addCase(refreshUser.fulfilled, handleRefreshingFull)

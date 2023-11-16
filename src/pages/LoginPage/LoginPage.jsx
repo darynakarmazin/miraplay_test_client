@@ -1,12 +1,24 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AuthorizationTitle from "../../components/title/AuthorizationTitle";
 import style from "./LoginPage.module.css";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+  const loginError = useSelector((state) => state.auth.error);
+
+  useEffect(() => {
+    if (loginError) {
+      toast.error(loginError.message);
+    }
+  }, [loginError]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,8 +34,6 @@ export default function LoginPage() {
         return;
     }
   };
-
-  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,6 +77,7 @@ export default function LoginPage() {
         <button className={style.form_button} type="submit">
           Log In
         </button>
+        <ToastContainer theme="dark" />
       </form>
     </div>
   );

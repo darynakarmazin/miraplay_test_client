@@ -1,14 +1,25 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import { register } from "../../redux/auth/operations";
 import RegistrationTitle from "../../components/title/RegistrationTitle";
 import style from "./RegisterPage.module.css";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+
+  const registrationError = useSelector((state) => state.auth.error);
+
+  useEffect(() => {
+    if (registrationError) {
+      toast.error(registrationError.message);
+    }
+  }, [registrationError]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -67,6 +78,7 @@ export default function RegisterPage() {
         <button className={style.form_button} type="submit">
           Register
         </button>
+        <ToastContainer theme="dark" />
       </form>
     </div>
   );
