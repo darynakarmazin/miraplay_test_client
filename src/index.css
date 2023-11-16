@@ -47,10 +47,30 @@ button {
 }
 
 .container {
-  width: 1220px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 45px auto;
+  width: 320px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 834px) {
+  .container {
+    width: 834px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .container {
+    width: 1220px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 45px auto;
+  }
 }
 
 :root {
