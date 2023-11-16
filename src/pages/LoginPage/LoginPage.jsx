@@ -46,6 +46,7 @@ export default function LoginPage() {
           Введіть ваш email:
           <input
             className={style.form_input}
+            placeholder="youremail@miraplay.com"
             type="email"
             name="email"
             value={email}
@@ -56,6 +57,7 @@ export default function LoginPage() {
           Введіть ваш пароль:
           <input
             className={style.form_input}
+            placeholder="ваш пароль"
             type="password"
             name="password"
             value={password}
