@@ -1,13 +1,21 @@
 import axios from "axios";
 import styles from "./GameCategoriesPage.module.css";
 import { useQuery } from "react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function CategoriesPage() {
-  const [filter, setFilter] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [filter, setFilter] = useState(
+    localStorage.getItem("filter") === "false"
+      ? false
+      : localStorage.getItem("filter")
+  );
+  const [currentPage, setCurrentPage] = useState(
+    parseInt(localStorage.getItem("currentPage")) || 1
+  );
   const [games, setGames] = useState([]);
-  const [sort, setSort] = useState(true);
+  const [sort, setSort] = useState(
+    localStorage.getItem("sort") === "false" ? false : true
+  );
 
   const { data, isLoading, isError } = useQuery(
     ["games", filter, currentPage, sort],
@@ -31,17 +39,30 @@ function CategoriesPage() {
     setFilter(selectedFilter === "ALL" ? false : selectedFilter);
     setCurrentPage(1);
     setGames([]);
+
+    localStorage.setItem(
+      "filter",
+      selectedFilter === "ALL" ? false : selectedFilter
+    );
+    localStorage.setItem("currentPage", 1);
   };
 
   const handleSortClick = (selectedSort) => {
     setSort(selectedSort);
     setCurrentPage(1);
     setGames([]);
+
+    localStorage.setItem("sort", selectedSort);
+    localStorage.setItem("currentPage", 1);
   };
 
   const handleShowMoreClick = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
+
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
 
   const canLoadMore = data && data.gamesListLength >= currentPage * 9;
 
