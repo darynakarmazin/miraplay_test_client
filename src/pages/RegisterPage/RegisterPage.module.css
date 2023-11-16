@@ -54,3 +54,17 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .page_container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+}
