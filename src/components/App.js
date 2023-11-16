@@ -9,7 +9,7 @@ import { useAuth } from "../redux/auth/useAuth";
 import { useEffect } from "react";
 import { refreshUser } from "../redux/auth/operations";
 import { Layout } from "./layout/Layout";
-import { RotatingLines } from "react-loader-spinner";
+import Loader from "./loader/Loader";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,22 +20,7 @@ function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <div
-      style={{
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-      }}
-    >
-      <RotatingLines
-        strokeColor="grey"
-        strokeWidth="5"
-        animationDuration="0.75"
-        width="96"
-        visible={true}
-      />
-    </div>
+    <Loader />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
