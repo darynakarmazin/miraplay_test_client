@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { logIn } from "../../redux/auth/operations";
+import { clearRegistrationError, logIn } from "../../redux/auth/operations";
 import { useState, useEffect } from "react";
 import AuthorizationTitle from "../../components/title/AuthorizationTitle";
 import style from "./LoginPage.module.css";
@@ -18,7 +18,11 @@ export default function LoginPage() {
     if (loginError) {
       toast.error(loginError.message);
     }
-  }, [loginError]);
+
+    return () => {
+      dispatch(clearRegistrationError());
+    };
+  }, [loginError, dispatch]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

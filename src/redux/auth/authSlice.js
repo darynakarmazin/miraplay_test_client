@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, logIn, logOut, refreshUser } from "./operations";
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  clearRegistrationError,
+} from "./operations";
 import {
   handleFulfilledLogOut,
   handleFulfilledPost,
@@ -30,7 +36,10 @@ const authSlice = createSlice({
       .addCase(logOut.fulfilled, handleFulfilledLogOut)
       .addCase(refreshUser.pending, handleRefreshingTrue)
       .addCase(refreshUser.fulfilled, handleRefreshingFull)
-      .addCase(refreshUser.rejected, handleRefreshingFalse);
+      .addCase(refreshUser.rejected, handleRefreshingFalse)
+      .addCase(clearRegistrationError, (state) => {
+        state.error = null;
+      });
   },
 });
 

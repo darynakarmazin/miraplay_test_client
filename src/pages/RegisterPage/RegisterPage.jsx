@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { register } from "../../redux/auth/operations";
+import { clearRegistrationError, register } from "../../redux/auth/operations";
 import RegistrationTitle from "../../components/title/RegistrationTitle";
 import style from "./RegisterPage.module.css";
 
@@ -19,7 +19,11 @@ export default function RegisterPage() {
     if (registrationError) {
       toast.error(registrationError.message);
     }
-  }, [registrationError]);
+
+    return () => {
+      dispatch(clearRegistrationError());
+    };
+  }, [registrationError, dispatch]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

@@ -1,6 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import { createAction } from "@reduxjs/toolkit";
+
+export const clearRegistrationError = createAction(
+  "auth/clearRegistrationError"
+);
+
 axios.defaults.baseURL = "https://miraplay-test-server.onrender.com";
 const path = "/api/users";
 
